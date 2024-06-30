@@ -1,0 +1,30 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.18;
+
+contract simpletoken {
+
+    string public a = "SimpleToken";
+    string public b = "STK";
+    uint public c = 0;
+
+    mapping(address => uint) public d;  // mapping 
+
+    function mint(address addr, uint val) public {   // function for creating tokens
+        c += val;
+        d[addr] += val;
+    }
+
+    function burn(address addr, uint val) public {     // destroying tokens
+        require(d[addr] >= val, "Insufficient balance to burn");
+        c -= val;
+        d[addr] -= val;
+    }
+
+    fallback() external payable {            // fallback function to prevent contract from receiving Ether
+        revert("Contract does not accept Ether");
+    }
+
+    receive() external payable {                // receive function to prevent contract from receiving Ether
+        revert("Contract accept Ether");
+    }
+}
