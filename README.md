@@ -82,4 +82,4 @@ This project demonstrates how to create a simple token smart contract using Soli
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
