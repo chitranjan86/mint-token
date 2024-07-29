@@ -19,17 +19,10 @@ The `SimpleToken` contract allows for minting and burning tokens while maintaini
 
 1. **mint(address addr, uint val)**: Mints `val` tokens to the address `addr`.
 2. **burn(address addr, uint val)**: Burns `val` tokens from the address `addr` if the address has sufficient balance.
-3. **fallback() external payable**: Prevents the contract from receiving Ether.
-4. **receive() external payable**: Prevents the contract from receiving Ether.
 
 ### Mappings
 
 - **d**: A mapping that keeps track of the token balance for each address.
-
-## Prerequisites
-
-- [Node.js](https://nodejs.org/)
-- [MetaMask](https://metamask.io/) browser extension
 
 ## Steps to Run the Project
 
@@ -41,35 +34,36 @@ The `SimpleToken` contract allows for minting and burning tokens while maintaini
 
     ```solidity
     // SPDX-License-Identifier: MIT
-    pragma solidity 0.8.18;
+pragma solidity 0.8.18;
+contract MyToken {
 
-    contract SimpleToken {
+    // public variables here
+    string public tokenName;
+    string public tokenAbbrv;
+    uint256 public totalSupply = 0;
 
-        string public a = "SimpleToken";
-        string public b = "STK";
-        uint public c = 0;
+    // mapping variable here
+    mapping(address => uint256) public balance;
 
-        mapping(address => uint) public d;  // mapping 
-
-        function mint(address addr, uint val) public {   // function for creating tokens
-            c += val;
-            d[addr] += val;
-        }
-
-        function burn(address addr, uint val) public {     // destroying tokens
-            require(d[addr] >= val, "Insufficient balance to burn");
-            c -= val;
-            d[addr] -= val;
-        }
-
-        fallback() external payable {            // fallback function to prevent contract from receiving Ether
-            revert("Contract does not accept Ether");
-        }
-
-        receive() external payable {                // receive function to prevent contract from receiving Ether
-            revert("Contract does not accept Ether");
-        }
+    // constructor to initialize the token details
+    constructor(string memory _name, string memory _abbrv) {
+        tokenName = _name;
+        tokenAbbrv = _abbrv;
     }
+
+    // mint function
+    function mint(address addr, uint256 _value) public {
+        totalSupply += _value;
+        balance[addr] += _value;                                  //increased balance
+    }
+
+    // burn function
+    function burn(address addr, uint256 _value) public {
+        require(balance[addr] >= _value, "Insufficient balance to burn");
+        totalSupply -= _value;
+        balance[addr] -= _value;                                                //decreased balance
+    }
+}
     ```
 
 4. Compile the contract using the Solidity compiler.
