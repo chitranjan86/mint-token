@@ -1,17 +1,17 @@
 # mint-token
  a smart contract to create your own ERC20 token and deploy it using HardHat or Remix. Once deployed, you should be able to interact with it for your walk-through video. From your chosen tool, the contract owner should be able to mint tokens to a provided address and any user should be able to burn and transfer tokens.
 
-# SimpleToken Smart Contract
+# MyToken Smart Contract
 
 This project demonstrates a simple Ethereum smart contract for creating and destroying tokens, along with mappings to track token balances for each address.
 
 ## Contract Overview
 
-The `SimpleToken` contract allows for minting and burning tokens while maintaining a balance for each address. It also includes fallback and receive functions to prevent the contract from receiving Ether.
+The `MyToken` contract allows for minting and burning tokens while maintaining a balance for each address. It also includes fallback and receive functions to prevent the contract from receiving Ether.
 
 ## Contract Details
 
-- **Name**: SimpleToken
+- **Name**: MyToken
 - **Symbol**: STK
 - **Total Supply**: Initially 0
 
@@ -28,14 +28,14 @@ The `SimpleToken` contract allows for minting and burning tokens while maintaini
 
 ### Step 1: Smart Contract
 
-1. Open [Remix IDE](https://remix.ethereum.org/).
-2. Create a new file named `SimpleToken.sol`.
+1. Open [Remix IDE]([https://remix.ethereum.org/](https://remix.ethereum.org/#lang=en&optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.18+commit.87f61d96.js)).
+2. Create a new file named `MyToken.sol`.
 3. Copy and paste the following Solidity code into the file:
 
     ```solidity
     // SPDX-License-Identifier: MIT
-pragma solidity 0.8.18;
-contract MyToken {
+     pragma solidity 0.8.18;
+     contract MyToken {
 
     // public variables here
     string public tokenName;
